@@ -9,6 +9,15 @@ Selects all image tags and makes them 500px;
 /*  width: 500px;*/
 /*}*/
 
-.gallery-container {
+.gallery-container{
   /* TODO add styles (hint: use flex!) https://www.w3schools.com/cssref/ */
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+#fruitButton{
+  display: flex;
+  justify-content: space-between;
 }

@@ -25,15 +25,25 @@ const updatePage = async () => {
   const gallery = document.getElementById('cs1300-gallery');
 
   // Make API request and get an array of fruit objects
-  const fruitsArray = await apiRequest();
-  // console.log(fruitsArray);
+  const fruitsArray = await apiRequest('https://www.fruityvice.com/doc/index.html#api-GET-getAll');
 
-  // TODO: Use either `map` and/or `filter` to extract some data from the array of fruit objects
-  // For example, find "name of all fruits whose sugar > 15",
+  const filtered = fruitsArray.filter((fruit) => fruit.nutritions.sugar > 15);
+  console.log("Fruits with Sugar > 15", filtered);
+  const outNames = filtered.map(fruit => fruit.name);
+  console.log(outNames);
 
   // TODO: Create a new HTML element to display your data
+  const sugarElement = document.createElement('div');
+  sugarElement.innerHTML = "<p> Fruits that have more than 15 grams of sugar: </p> <br> <br>";
 
   // TODO: Append your new element to the page
+  gallery.append(sugarElement)
+  for (let i = 0; i < outNames.length; i++) {
+    const sElem = document.createElement('div');
+    sElem.className = 'out-fruits';
+    sElem.innerHTML = outNames[i];
+    gallery.append(sElem);
+  }
 
 }
 
